@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F3AB86A7779E01FC94A53A3 /* Pods_RxNetworkModelCommon_RxNetworkModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7424D1E11FD8540649D0ACB0 /* Pods_RxNetworkModelCommon_RxNetworkModel.framework */; };
+		61354D561D07109E00E9643C /* UIScrollView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61354D551D07109E00E9643C /* UIScrollView+Rx.swift */; };
 		61E434F41D066C2000825E80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E434F31D066C2000825E80 /* AppDelegate.swift */; };
 		61E434F61D066C2000825E80 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E434F51D066C2000825E80 /* ViewController.swift */; };
 		61E434F91D066C2000825E80 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61E434F71D066C2000825E80 /* Main.storyboard */; };
@@ -14,6 +16,10 @@
 		61E434FE1D066C2000825E80 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61E434FC1D066C2000825E80 /* LaunchScreen.storyboard */; };
 		61E435091D066C2000825E80 /* RxNetworkModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E435081D066C2000825E80 /* RxNetworkModelTests.swift */; };
 		61E435141D066C2000825E80 /* RxNetworkModelUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E435131D066C2000825E80 /* RxNetworkModelUITests.swift */; };
+		61E435221D06779D00825E80 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E435211D06779D00825E80 /* Repository.swift */; };
+		61E435241D068A7500825E80 /* RepositoryNetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E435231D068A7500825E80 /* RepositoryNetworkModel.swift */; };
+		61E435261D068CA000825E80 /* GithubAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E435251D068CA000825E80 /* GithubAPI.swift */; };
+		61E435281D06A3F200825E80 /* RepoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E435271D06A3F200825E80 /* RepoTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0817B620B05EB261148C8ED8 /* Pods-RxNetworkModelCommon-RxNetworkModel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxNetworkModelCommon-RxNetworkModel.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxNetworkModelCommon-RxNetworkModel/Pods-RxNetworkModelCommon-RxNetworkModel.release.xcconfig"; sourceTree = "<group>"; };
+		61354D551D07109E00E9643C /* UIScrollView+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Rx.swift"; sourceTree = "<group>"; };
 		61E434F01D066C2000825E80 /* RxNetworkModel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxNetworkModel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		61E434F31D066C2000825E80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		61E434F51D066C2000825E80 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +55,12 @@
 		61E4350F1D066C2000825E80 /* RxNetworkModelUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RxNetworkModelUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		61E435131D066C2000825E80 /* RxNetworkModelUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxNetworkModelUITests.swift; sourceTree = "<group>"; };
 		61E435151D066C2000825E80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		61E435211D06779D00825E80 /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		61E435231D068A7500825E80 /* RepositoryNetworkModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryNetworkModel.swift; sourceTree = "<group>"; };
+		61E435251D068CA000825E80 /* GithubAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubAPI.swift; sourceTree = "<group>"; };
+		61E435271D06A3F200825E80 /* RepoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoTableViewController.swift; sourceTree = "<group>"; };
+		7424D1E11FD8540649D0ACB0 /* Pods_RxNetworkModelCommon_RxNetworkModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxNetworkModelCommon_RxNetworkModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		76FC1945894A837A8319B159 /* Pods-RxNetworkModelCommon-RxNetworkModel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxNetworkModelCommon-RxNetworkModel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxNetworkModelCommon-RxNetworkModel/Pods-RxNetworkModelCommon-RxNetworkModel.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F3AB86A7779E01FC94A53A3 /* Pods_RxNetworkModelCommon_RxNetworkModel.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +89,55 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A05E7202673169511E528EC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7424D1E11FD8540649D0ACB0 /* Pods_RxNetworkModelCommon_RxNetworkModel.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		61354D581D08156500E9643C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				61354D551D07109E00E9643C /* UIScrollView+Rx.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		61354D591D08157500E9643C /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				61E435251D068CA000825E80 /* GithubAPI.swift */,
+			);
+			name = Networking;
+			sourceTree = "<group>";
+		};
+		61354D5A1D0815AA00E9643C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				61E434F51D066C2000825E80 /* ViewController.swift */,
+				61E435271D06A3F200825E80 /* RepoTableViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		61354D5B1D0815FC00E9643C /* App */ = {
+			isa = PBXGroup;
+			children = (
+				61E434F31D066C2000825E80 /* AppDelegate.swift */,
+			);
+			name = App;
+			sourceTree = "<group>";
+		};
+		61354D5C1D08162900E9643C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				61E435211D06779D00825E80 /* Repository.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		61E434E71D066C2000825E80 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +145,8 @@
 				61E435071D066C2000825E80 /* RxNetworkModelTests */,
 				61E435121D066C2000825E80 /* RxNetworkModelUITests */,
 				61E434F11D066C2000825E80 /* Products */,
+				7D29467979DB5634BB0C98DD /* Pods */,
+				1A05E7202673169511E528EC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,12 +163,16 @@
 		61E434F21D066C2000825E80 /* RxNetworkModel */ = {
 			isa = PBXGroup;
 			children = (
-				61E434F31D066C2000825E80 /* AppDelegate.swift */,
-				61E434F51D066C2000825E80 /* ViewController.swift */,
+				61354D5B1D0815FC00E9643C /* App */,
+				61354D5C1D08162900E9643C /* Models */,
+				61354D5A1D0815AA00E9643C /* ViewControllers */,
+				61354D591D08157500E9643C /* Networking */,
+				61354D581D08156500E9643C /* Extensions */,
 				61E434F71D066C2000825E80 /* Main.storyboard */,
 				61E434FA1D066C2000825E80 /* Assets.xcassets */,
 				61E434FC1D066C2000825E80 /* LaunchScreen.storyboard */,
 				61E434FF1D066C2000825E80 /* Info.plist */,
+				61E435231D068A7500825E80 /* RepositoryNetworkModel.swift */,
 			);
 			path = RxNetworkModel;
 			sourceTree = "<group>";
@@ -125,6 +195,15 @@
 			path = RxNetworkModelUITests;
 			sourceTree = "<group>";
 		};
+		7D29467979DB5634BB0C98DD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				76FC1945894A837A8319B159 /* Pods-RxNetworkModelCommon-RxNetworkModel.debug.xcconfig */,
+				0817B620B05EB261148C8ED8 /* Pods-RxNetworkModelCommon-RxNetworkModel.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +211,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 61E435181D066C2000825E80 /* Build configuration list for PBXNativeTarget "RxNetworkModel" */;
 			buildPhases = (
+				BA6CD1229D688A7CD56EE9DF /* 📦 Check Pods Manifest.lock */,
 				61E434EC1D066C2000825E80 /* Sources */,
 				61E434ED1D066C2000825E80 /* Frameworks */,
 				61E434EE1D066C2000825E80 /* Resources */,
+				3745BEE24DB1C48D4C67957A /* 📦 Embed Pods Frameworks */,
+				DDF09372AA98939F5AA8DA07 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -251,13 +333,66 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3745BEE24DB1C48D4C67957A /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RxNetworkModelCommon-RxNetworkModel/Pods-RxNetworkModelCommon-RxNetworkModel-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BA6CD1229D688A7CD56EE9DF /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DDF09372AA98939F5AA8DA07 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RxNetworkModelCommon-RxNetworkModel/Pods-RxNetworkModelCommon-RxNetworkModel-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		61E434EC1D066C2000825E80 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				61E434F61D066C2000825E80 /* ViewController.swift in Sources */,
+				61354D561D07109E00E9643C /* UIScrollView+Rx.swift in Sources */,
+				61E435281D06A3F200825E80 /* RepoTableViewController.swift in Sources */,
 				61E434F41D066C2000825E80 /* AppDelegate.swift in Sources */,
+				61E435241D068A7500825E80 /* RepositoryNetworkModel.swift in Sources */,
+				61E435261D068CA000825E80 /* GithubAPI.swift in Sources */,
+				61E435221D06779D00825E80 /* Repository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,6 +532,7 @@
 		};
 		61E435191D066C2000825E80 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 76FC1945894A837A8319B159 /* Pods-RxNetworkModelCommon-RxNetworkModel.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = RxNetworkModel/Info.plist;
@@ -408,6 +544,7 @@
 		};
 		61E4351A1D066C2000825E80 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0817B620B05EB261148C8ED8 /* Pods-RxNetworkModelCommon-RxNetworkModel.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = RxNetworkModel/Info.plist;
@@ -482,6 +619,7 @@
 				61E4351A1D066C2000825E80 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		61E4351B1D066C2000825E80 /* Build configuration list for PBXNativeTarget "RxNetworkModelTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +628,7 @@
 				61E4351D1D066C2000825E80 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		61E4351E1D066C2000825E80 /* Build configuration list for PBXNativeTarget "RxNetworkModelUITests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +637,7 @@
 				61E435201D066C2000825E80 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
