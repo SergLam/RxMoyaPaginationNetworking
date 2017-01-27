@@ -11,6 +11,7 @@ import Moya_ModelMapper
 import UIKit
 import RxCocoa
 import RxSwift
+import MBProgressHUD
 
 class RepoTableViewController: UIViewController {
 
@@ -23,7 +24,6 @@ class RepoTableViewController: UIViewController {
     var repositoryNetworkModel:RepositoryNetworkModel!
     
     override func viewDidLoad() {
-        print("viewDidLoad")
         super.viewDidLoad()
         self.title = "Demo:Rxswift+Moya+Pagination"
         tableView = UITableView(frame: UIScreen.main.bounds)
@@ -40,9 +40,7 @@ class RepoTableViewController: UIViewController {
             self.view.addSubview(refreshControl)
             
         }
-
         
-        print("setupRx")
         repositoryNetworkModel = RepositoryNetworkModel(provider: githubProvider)
         repositoryNetworkModel.elements.asObservable()
             .bindTo(self.tableView.rx.items) { (tableView, row, item) in
@@ -65,15 +63,27 @@ class RepoTableViewController: UIViewController {
             .bindTo(repositoryNetworkModel.refreshTrigger)
             .addDisposableTo(disposeBag)
         
-        repositoryNetworkModel.elements
-            .asDriver()
-            .drive(onNext: { _ in
+        repositoryNetworkModel.loading.asDriver()
+             .filter { !$0 && self.refreshControl?.isRefreshing == true }
+             .drive(onNext: { _ in
                 self.refreshControl?.endRefreshing()
-            })
-            .addDisposableTo(disposeBag)
+             }).addDisposableTo(disposeBag)
         
-        
-        
-
+    
     }
 }
+
+func isLoading(for view: UIView) -> AnyObserver<Bool> {
+    return UIBindingObserver(UIElement: view, binding: { (hud, isLoading) in
+        switch isLoading {
+        case true:
+            MBProgressHUD.showAdded(to: UIApplication.shared.keyWindow!, animated: true)
+        case false:
+            MBProgressHUD.hide(for: UIApplication.shared.keyWindow!, animated: true)
+            break
+        }
+        
+    }).asObserver()
+}
+
+

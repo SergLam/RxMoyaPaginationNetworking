@@ -31,6 +31,7 @@ class RepositoryNetworkModel {
         let refreshRequest = loading.asObservable()
             .sample(refreshTrigger)
             .flatMap { loading -> Observable<[Repository]> in
+        
                 if loading {
                     return Observable.empty()
                 } else {
@@ -56,15 +57,17 @@ class RepositoryNetworkModel {
             .merge()
             .shareReplay(1)
         
-        Observable
+    Observable
             .of(request.map { _ in false })
             .merge()
             .bindTo(loading)
             .addDisposableTo(disposeBag)
-        
+      
         request.subscribe(onNext: { repositorys in
             self.elements.value.append(contentsOf: repositorys)
         }).addDisposableTo(disposeBag)
+        
+        
         
     }
     
