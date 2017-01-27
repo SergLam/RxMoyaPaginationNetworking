@@ -13,8 +13,8 @@ import Mapper
 public extension Response {
     
     public func mapObject<T: Mappable>() throws -> T {
-        guard let jsonDictionary = try mapJSON() as? NSDictionary, object = T.from(jsonDictionary) else {
-            throw Error.JSONMapping(self)
+        guard let jsonDictionary = try mapJSON() as? NSDictionary, let object = T.from(jsonDictionary) else {
+            throw MoyaError.jsonMapping(self)
         }
         
         return object
@@ -24,17 +24,17 @@ public extension Response {
         guard let keyPath = keyPath else { return try mapObject() }
         
         guard let jsonDictionary = try mapJSON() as? NSDictionary,
-            let objectDictionary = jsonDictionary.valueForKeyPath(keyPath) as? NSDictionary,
+            let objectDictionary = jsonDictionary.value(forKeyPath:keyPath) as? NSDictionary,
             let object = T.from(objectDictionary) else {
-                throw Error.JSONMapping(self)
+                throw MoyaError.jsonMapping(self)
         }
         
         return object
     }
     
     public func mapArray<T: Mappable>() throws -> [T] {
-        guard let jsonArray = try mapJSON() as? NSArray, object = T.from(jsonArray) else {
-            throw Error.JSONMapping(self)
+        guard let jsonArray = try mapJSON() as? NSArray, let object = T.from(jsonArray) else {
+            throw MoyaError.jsonMapping(self)
         }
         
         return object
@@ -44,9 +44,9 @@ public extension Response {
         guard let keyPath = keyPath else { return try mapArray() }
         
         guard let jsonDictionary = try mapJSON() as? NSDictionary,
-            let objectArray = jsonDictionary.valueForKeyPath(keyPath) as? NSArray,
+            let objectArray = jsonDictionary.value(forKeyPath:keyPath) as? NSArray,
             let object = T.from(objectArray) else {
-                throw Error.JSONMapping(self)
+                throw MoyaError.jsonMapping(self)
         }
         
         return object

@@ -34,7 +34,8 @@ class RepositoryNetworkModel {
                 if loading {
                     return Observable.empty()
                 } else {
-                    return self.fetchRepository("swift",page:1).filterNil()
+                    self.elements.value.removeAll()
+                    return self.fetchRepository(keyword: "swift",page:1).filterNil()
                 }
         }
         
@@ -46,7 +47,7 @@ class RepositoryNetworkModel {
                     return Observable.empty()
                 } else {
                     self.pageIndex = self.pageIndex + 1
-                    return self.fetchRepository("swift",page:self.pageIndex).filterNil()
+                    return self.fetchRepository(keyword: "swift",page:self.pageIndex).filterNil()
                 }
             }
         
@@ -61,19 +62,17 @@ class RepositoryNetworkModel {
             .bindTo(loading)
             .addDisposableTo(disposeBag)
         
-        request.subscribeNext { (repositorys) in
-            repositorys.toObservable().subscribeNext({ (repository) in
-                self.elements.value.append(repository)
-            }).dispose()
-            }.addDisposableTo(disposeBag)
+        request.subscribe(onNext: { repositorys in
+            self.elements.value.append(contentsOf: repositorys)
+        }).addDisposableTo(disposeBag)
         
     }
     
     func fetchRepository(keyword:String, page:Int) -> Observable<[Repository]?> {
         return self.provider
             .request(GitHub.FetchRepositorys(keyword:keyword,page:page))
-            .debug()
-            .mapArrayOptional(Repository.self, keyPath: "items")
+          //  .debug()
+            .mapArrayOptional(type: Repository.self, keyPath: "items")
     }
  
 }

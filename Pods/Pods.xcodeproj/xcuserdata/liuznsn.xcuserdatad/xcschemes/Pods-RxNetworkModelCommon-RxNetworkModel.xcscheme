@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2DEA7183D88B47FA8B8BEED6A4EA287E"
+               BlueprintIdentifier = "2A44E91F4B7812BEF389E24AABC7E08A"
                BuildableName = "Pods_RxNetworkModelCommon_RxNetworkModel.framework"
                BlueprintName = "Pods-RxNetworkModelCommon-RxNetworkModel"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2DEA7183D88B47FA8B8BEED6A4EA287E"
+            BlueprintIdentifier = "2A44E91F4B7812BEF389E24AABC7E08A"
             BuildableName = "Pods_RxNetworkModelCommon_RxNetworkModel.framework"
             BlueprintName = "Pods-RxNetworkModelCommon-RxNetworkModel"
             ReferencedContainer = "container:Pods.xcodeproj">

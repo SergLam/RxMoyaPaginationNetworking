@@ -3,7 +3,7 @@ import RxSwift
 
 extension UIScrollView {
     var rx_reachedBottom: Observable<Void> {
-        return rx_contentOffset
+        return rx.contentOffset
             .flatMap { [weak self] contentOffset -> Observable<Void> in
                 guard let scrollView = self else {
                     return Observable.empty()

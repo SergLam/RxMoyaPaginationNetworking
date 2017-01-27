@@ -13,9 +13,9 @@ public extension Response {
 
   /// Maps data received from the signal into an object which implements the Mappable protocol.
   /// If the conversion fails, the signal errors.
-  public func mapObject<T: Mappable>() throws -> T {
-    guard let object = Mapper<T>().map(try mapJSON()) else {
-      throw Error.JSONMapping(self)
+  public func mapObject<T: BaseMappable>(_ type: T.Type) throws -> T {
+    guard let object = Mapper<T>().map(JSONObject: try mapJSON()) else {
+      throw MoyaError.jsonMapping(self)
     }
    return object
   }
@@ -23,11 +23,35 @@ public extension Response {
   /// Maps data received from the signal into an array of objects which implement the Mappable
   /// protocol.
   /// If the conversion fails, the signal errors.
-  public func mapArray<T: Mappable>() throws -> [T] {
-    guard let objects = Mapper<T>().mapArray(try mapJSON()) else {
-      throw Error.JSONMapping(self)
+  public func mapArray<T: BaseMappable>(_ type: T.Type) throws -> [T] {
+    guard let array = try mapJSON() as? [[String : Any]], let objects = Mapper<T>().mapArray(JSONArray: array) else {
+      throw MoyaError.jsonMapping(self)
     }
     return objects
+  }
+
+}
+
+
+// MARK: - ImmutableMappable
+
+public extension Response {
+
+  /// Maps data received from the signal into an object which implements the ImmutableMappable
+  /// protocol.
+  /// If the conversion fails, the signal errors.
+  public func mapObject<T: ImmutableMappable>(_ type: T.Type) throws -> T {
+    return try Mapper<T>().map(JSONObject: try mapJSON())
+  }
+
+  /// Maps data received from the signal into an array of objects which implement the ImmutableMappable
+  /// protocol.
+  /// If the conversion fails, the signal errors.
+  public func mapArray<T: ImmutableMappable>(_ type: T.Type) throws -> [T] {
+    guard let array = try mapJSON() as? [[String : Any]] else {
+      throw MoyaError.jsonMapping(self)
+    }
+    return try Mapper<T>().mapArray(JSONArray: array)
   }
 
 }

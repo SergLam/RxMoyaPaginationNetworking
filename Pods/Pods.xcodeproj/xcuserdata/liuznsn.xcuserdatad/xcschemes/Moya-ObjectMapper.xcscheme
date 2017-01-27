@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2ED02EC9E5EE712D362F31DA0BCE0538"
+               BlueprintIdentifier = "49C6564B2E2D0A1604946BAD65772E21"
                BuildableName = "Moya_ObjectMapper.framework"
                BlueprintName = "Moya-ObjectMapper"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2ED02EC9E5EE712D362F31DA0BCE0538"
+            BlueprintIdentifier = "49C6564B2E2D0A1604946BAD65772E21"
             BuildableName = "Moya_ObjectMapper.framework"
             BlueprintName = "Moya-ObjectMapper"
             ReferencedContainer = "container:Pods.xcodeproj">
