@@ -19,10 +19,11 @@ class RepositoryNetworkModel {
     
     let refreshTrigger = PublishSubject<Void>()
     let loadNextPageTrigger = PublishSubject<Void>()
-    let loading = Variable<Bool>(false)
+    var loading = Variable<Bool>(false)
     var elements = Variable<[Repository]>([])
     var pageIndex:Int = 1
-    
+    let error = PublishSubject<Swift.Error>()
+
     private let disposeBag = DisposeBag()
 
     init(provider:RxMoyaProvider<GitHub>){
@@ -32,6 +33,7 @@ class RepositoryNetworkModel {
             .sample(refreshTrigger)
             .flatMap { loading -> Observable<[Repository]> in
         
+                print("refreshRequest loading:\(loading)")
                 if loading {
                     return Observable.empty()
                 } else {
@@ -44,31 +46,46 @@ class RepositoryNetworkModel {
             .sample(loadNextPageTrigger)
             .flatMap { loading -> Observable<[Repository]> in
                // print("nextPageRequest:\(loading) \(self.pageIndex)")
+                
+            print("nextPageRequest loading:\(loading)")
+                
                 if loading {
                     return Observable.empty()
                 } else {
                     self.pageIndex = self.pageIndex + 1
                     return self.fetchRepository(keyword: "swift",page:self.pageIndex).filterNil()
                 }
+                
             }
+        
         
         let request = Observable
             .of(refreshRequest, nextPageRequest)
             .merge()
             .shareReplay(1)
         
+        let response = request.flatMap { repositories -> Observable<[Repository]> in
+            request
+                .do(onNext: { repositorys in
+                    self.elements.value.append(contentsOf: repositorys)
+                }, onError: { error in
+                    self.error.onNext(error)
+                }).catchError({ error -> Observable<[Repository]> in
+                    Observable.empty()
+                })
+            
+            }.shareReplay(1)
+
+
     Observable
-            .of(request.map { _ in false })
+            .of(request.map { _ in true },
+                response.map { _ in false },
+                error.map { _ in false }
+            )
             .merge()
             .bindTo(loading)
             .addDisposableTo(disposeBag)
       
-        request.subscribe(onNext: { repositorys in
-            self.elements.value.append(contentsOf: repositorys)
-        }).addDisposableTo(disposeBag)
-        
-        
-        
     }
     
     func fetchRepository(keyword:String, page:Int) -> Observable<[Repository]?> {

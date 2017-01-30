@@ -56,6 +56,7 @@ class RepoTableViewController: UIViewController {
             .addDisposableTo(disposeBag)
         
         tableView.rx_reachedBottom
+            .map{ _ in ()}
             .bindTo(repositoryNetworkModel.loadNextPageTrigger)
             .addDisposableTo(disposeBag)
         
@@ -63,11 +64,14 @@ class RepoTableViewController: UIViewController {
             .bindTo(repositoryNetworkModel.refreshTrigger)
             .addDisposableTo(disposeBag)
         
-        repositoryNetworkModel.loading.asDriver()
-             .filter { !$0 && self.refreshControl?.isRefreshing == true }
-             .drive(onNext: { _ in
-                self.refreshControl?.endRefreshing()
-             }).addDisposableTo(disposeBag)
+        repositoryNetworkModel.loading.asObservable()
+             .do(onNext: { isLoading in
+                if(isLoading) {
+                    self.refreshControl?.endRefreshing()
+                }
+             })
+             .bindTo(isLoading(for: self.view))
+             .addDisposableTo(disposeBag)
         
     
     }
@@ -82,7 +86,6 @@ func isLoading(for view: UIView) -> AnyObserver<Bool> {
             MBProgressHUD.hide(for: UIApplication.shared.keyWindow!, animated: true)
             break
         }
-        
     }).asObserver()
 }
 
