@@ -19,8 +19,8 @@ class RepositoryNetworkModel {
     
     let refreshTrigger = PublishSubject<Void>()
     let loadNextPageTrigger = PublishSubject<Void>()
-    var loading = Variable<Bool>(false)
-    var elements = Variable<[Repository]>([])
+    let loading = Variable<Bool>(false)
+    let elements = Variable<[Repository]>([])
     var pageIndex:Int = 1
     let error = PublishSubject<Swift.Error>()
 
@@ -32,23 +32,17 @@ class RepositoryNetworkModel {
         let refreshRequest = loading.asObservable()
             .sample(refreshTrigger)
             .flatMap { loading -> Observable<[Repository]> in
-        
-                print("refreshRequest loading:\(loading)")
                 if loading {
                     return Observable.empty()
                 } else {
-                    self.elements.value.removeAll()
-                    return self.fetchRepository(keyword: "swift",page:1).filterNil()
+                    self.pageIndex = 1
+                    return self.fetchRepository(keyword: "swift",page:self.pageIndex).filterNil()
                 }
         }
         
         let nextPageRequest = loading.asObservable()
             .sample(loadNextPageTrigger)
             .flatMap { loading -> Observable<[Repository]> in
-               // print("nextPageRequest:\(loading) \(self.pageIndex)")
-                
-            print("nextPageRequest loading:\(loading)")
-                
                 if loading {
                     return Observable.empty()
                 } else {
@@ -66,16 +60,20 @@ class RepositoryNetworkModel {
         
         let response = request.flatMap { repositories -> Observable<[Repository]> in
             request
-                .do(onNext: { repositorys in
-                    self.elements.value.append(contentsOf: repositorys)
-                }, onError: { error in
+                .do(onError: { error in
                     self.error.onNext(error)
                 }).catchError({ error -> Observable<[Repository]> in
                     Observable.empty()
                 })
-            
             }.shareReplay(1)
-
+        
+         Observable
+             .combineLatest(request, response, elements.asObservable()) { request, response, elements in
+                return self.pageIndex == 1 ? response : elements + response
+        }
+        .sample(response)
+        .bindTo(elements)
+        .addDisposableTo(disposeBag)
 
     Observable
             .of(request.map { _ in true },
